@@ -1,0 +1,293 @@
+/*  FONT IMPORT  */
+
+@font-face {
+    font-family: 'HelveticaNeueBold';
+    font-style: normal;
+    font-weight: 700;
+    src: url('fonts/HelveticaNeueBold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'HelveticaNeueSemibold';
+    font-style: normal;
+    font-weight: 500;
+    src: url('fonts/HelveticaNeueSemibold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Averta-Semibold';
+    font-style: normal;
+    font-weight: 500;
+    src: url('fonts/Averta-Semibold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('fonts/Lato-Regular.ttf') format('truetype');
+}
+
+/*-----------------------*/
+/*  BASE  */
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    box-sizing: border-box;
+    background-color: #F8FAFB;
+    font-family: 'HelveticaNeueBold', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: #393939;
+}
+
+a,
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #fff;
+}
+
+/*-----------------------*/
+/*  TYPOGRAPHY  */
+
+.heading-primary {
+    font-size: 2.5rem;
+    margin-bottom: 5rem;
+}
+
+.heading-secondary {
+    font-size: 2.2rem;
+    margin: 13rem 0 5.5rem;
+}
+
+.heading-secondary.error {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.checkbox-title {
+    font-size: 1.8rem;
+}
+
+.checkbox-title.first {
+    padding: 1.3rem 0 0.9rem 6rem;
+}
+
+.checkbox-paragraph {
+    font-family: 'HelveticaNeueSemibold', sans-serif;
+    font-size: 1.6rem;
+    display: block;
+}
+
+.checkbox-paragraph a {
+    color: #59ADEF;
+    text-decoration: underline;
+}
+
+.privacy-header {
+    font-family: 'HelveticaNeueSemibold', sans-serif;
+    font-size: 1.8rem;
+    color: #fff;
+    text-align: center;
+    display: block;
+    line-height: 1;
+}
+
+.divider {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+/*-----------------------*/
+/*  INPUT & LABEL  */
+
+input[type="text"] {
+    width: 100%;
+    height: 4.6rem;
+    background: #EDF2F6;
+    border-radius: 4px;
+    border: 0;
+    outline: 0;
+    font-family: 'HelveticaNeueSemibold', sans-serif;
+    font-size: 1.5rem;
+    color: #393939;
+    padding: 0 2rem;
+}
+
+.label {
+    font-family: 'HelveticaNeueSemibold', sans-serif;
+    font-size: 1.5rem;
+    color: #96A7B2;
+}
+
+/*-----------------------*/
+
+/*  BUTTON  */
+.button-primary {
+    width: 246px;
+    height: 55px;
+    background: linear-gradient(90deg, #3B87CB 0%, #35489B 100%), #FFFFFF;
+    box-shadow: 0 20px 40px rgba(157, 169, 176, 0.25);
+    border: 0;
+    outline: none !important;
+    border-radius: .4rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    color: #fff;
+}
+
+/*-----------------------*/
+/*  HEADER  */
+
+.header {
+    margin: 7.1rem auto 13rem;
+}
+
+/*-----------------------*/
+/*  SIGN UP  */
+
+.sign-up {
+    margin-bottom: 17.5rem;
+}
+
+/*  CUSTOM CHECKBOXES  */
+.sign-up__checkboxes {
+    margin: 0 0 3.5rem 5rem;
+}
+
+.sign-up .button-primary {
+    margin-top: 70px;
+}
+
+.checkbox-title {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 0 0 0 6rem;
+}
+
+.checkbox-title input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-title .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4.6rem;
+    width: 4.6rem;
+    background-color: #eee;
+    border-radius: 4px;
+}
+
+.checkbox-title:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.checkbox-title input:checked ~ .checkmark {
+    background-color: #59ADEF;
+}
+
+.checkbox-title .checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-title input:checked ~ .checkmark::after {
+    display: block;
+}
+
+.checkbox-title .checkmark:after {
+    left: 1.8rem;
+    top: 1.1rem;
+    width: 1rem;
+    height: 1.8rem;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*-----------------------*/
+
+/*  NOT A MEMBER  */
+
+.member {
+    background-color: #E2F3FD;
+    padding: 7.5rem 0;
+}
+
+.member .heading-secondary {
+    margin: 0 0 3.4rem 0;
+}
+
+/*-----------------------*/
+/*  FOOTER  */
+
+.privacy {
+    background-color: #4D9EEC;
+    padding: 2.6rem 0 2.4rem;
+}
+/*-----------------------*/
+
+/*  RESPONSIVE  */
+
+@media (max-width: 576px) {
+
+    .header {
+        margin: 5.1rem auto 9rem;
+    }
+
+    .sign-up {
+        margin-bottom: 7.5rem;
+    }
+
+    .sign-up .heading-secondary {
+        margin: 8rem 0 5.5rem;
+    }
+
+    .sign-up__checkboxes {
+        margin: 0 0 3.5rem 0;
+    }
+
+    .sign-up .button-primary {
+        margin-top: 20px;
+    }
+
+    .member .heading-secondary {
+        text-align: center;
+    }
+
+    .member .button-primary {
+        display: block;
+        margin: 0 auto;
+    }
+}
+/*-----------------------*/
+
+/*  BOOTSTRAP CONTAINER WIDTH  */
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 750px;
+    }
+}
