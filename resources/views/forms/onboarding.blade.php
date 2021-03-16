@@ -145,7 +145,7 @@
                                 Full Name
                             </label>
                             <input id="fullName" type="text" name="contact_info[full_name]"
-                                placeholder="Contact’s full name..." required>
+                                placeholder="Contact’s full name...">
                         </div>
                         <div class="form__item">
 
@@ -381,10 +381,10 @@
                             </div>
 
                             <select name="techSupport[status]" id="techSupport">
-                                <option value="1">
+                                <option value='1'>
                                     I have technical support
                                 </option>
-                                <option value="2">
+                                <option value='2'>
                                     I DON’T have technical support
                                 </option>
                             </select>

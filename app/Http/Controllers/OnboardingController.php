@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OnboardingRequest;
 use App\Models\Manager;
 use App\Models\Onboarding;
 use App\Models\ProductCategory;
@@ -15,18 +16,20 @@ use App\Services\OnboardingService as Service;
 class OnboardingController extends Controller
 {
     protected $service;
+    protected $request;
 
     public function __construct(Service $service)
     {
         $this->service = $service;
     }
 
-    public function signUp()
+    public function signUp(OnboardingRequest $request)
     {
-        $onboarding = Onboarding::create($this->service->prepareData());
+
+        $onboarding = Onboarding::create($this->service->prepareData($request));
         $onb = Onboarding::find($onboarding->id);
         Mail::to('465cde86fb-1ce71d@inbox.mailtrap.io')->send(new SendOnboardingEmail($onb));
-        return redirect('thank-you');
+        return redirect('thank-you')->with('message', 'Thank you for your time '  . $onb->contact_info->full_name .  '. Somebody from Digistore24 will contact you shortly.');
 
     }
 

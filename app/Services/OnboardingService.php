@@ -4,7 +4,7 @@
 namespace App\Services;
 
 use App\Models\Manager;
-use App\Requests\OnboardingSignupFormRequest;
+
 
 class OnboardingService
 {
@@ -13,52 +13,50 @@ class OnboardingService
     protected $request;
 
 
-    public function __construct (OnboardingSignupFormRequest $request) {
-        $this->request = $request;
-    }
 
 
-    public function setAllUpsDowns () {
+
+    public function setAllUpsDowns ($request) {
         $this->oto['upsellDownsell'] = [
-            'type' => $this->request['upsellDownsell'],
-            'funnelUrl' => $this->request['funnelUrl'],
-            'funnelPrice' => $this->request['funnelPrice'][0],
-            'funnelCommission' =>  $this->request['funnelCommission'][0],
-            'upsellThankYou' => $this->request['upsellThankYou']
+            'type' => $request['upsellDownsell'],
+            'funnelUrl' => $request['funnelUrl'],
+            'funnelPrice' => $request['funnelPrice'][0],
+            'funnelCommission' =>  $request['funnelCommission'][0],
+            'upsellThankYou' => $request['upsellThankYou']
         ];
 
-        for ($i = 2; !empty($this->request['upsellDownsell' . $i]) ; $i++) {
+        for ($i = 2; !empty($request['upsellDownsell' . $i]) ; $i++) {
             $this->oto['upsellDownsell' . $i] = [
-                'type' => $this->request['upsellDownsell'. $i],
-                'funnelUrl' => $this->request['funnelUrl'. $i],
-                'funnelPrice' => $this->request['funnelPrice'][$i - 1],
-                'funnelCommission' =>  $this->request['funnelCommission'][$i - 1],
-                'upsellThankYou' => $this->request['upsellThankYou'. $i]
+                'type' => $request['upsellDownsell'. $i],
+                'funnelUrl' => $request['funnelUrl'. $i],
+                'funnelPrice' => $request['funnelPrice'][$i - 1],
+                'funnelCommission' =>  $request['funnelCommission'][$i - 1],
+                'upsellThankYou' => $request['upsellThankYou'. $i]
             ];
         }
         return $this->oto;
     }
 
-    public function prepareData() {
+    public function prepareData($request) {
        return $this->data = [
-            'manager_id' => $this->request->contact_person,
-            'manager_name' => Manager::find( $this->request->contact_person)->name,
-            'manager_email' => Manager::find( $this->request->contact_person)->email,
-            'contact_info' => $this->request->contact_info,
-            'platform' => $this->request->platform,
-            'product' => $this->request->product,
+            'manager_id' => $request->contact_person,
+            'manager_name' => Manager::find( $request->contact_person)->name,
+            'manager_email' => Manager::find( $request->contact_person)->email,
+            'contact_info' => $request->contact_info,
+            'platform' => $request->platform,
+            'product' => $request->product,
             'techSupport' => [
-                'status' => $this->request->techSupport['status'] === '1' ? true : false,
-                'website_access_url' => $this->request->techSupport['website_access_url'],
-                'website_access_username' => $this->request->techSupport['website_access_username'],
-                'website_access_password' => $this->request->techSupport['website_access_password']
+                'status' => $request->techSupport['status'] === '1' ? true : false,
+                'website_access_url' => $request->techSupport['website_access_url'],
+                'website_access_username' => $request->techSupport['website_access_username'],
+                'website_access_password' => $request->techSupport['website_access_password']
             ],
-            'oto' => $this->setAllUpsDowns(),
-            'integrationType' => $this->request->integrationType,
-            'customIntegration' => $this->request->customIntegration,
-            'fulfillment' => $this->request->fulfillment,
-            'credentials' => $this->request->credentials,
-            'comments' => $this->request->comments,
+            'oto' => $this->setAllUpsDowns($request),
+            'integrationType' => $request->integrationType,
+            'customIntegration' => $request->customIntegration,
+            'fulfillment' => $request->fulfillment,
+            'credentials' => $request->credentials,
+            'comments' => $request->comments,
         ];
 
     }
